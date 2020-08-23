@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form Data</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      blockquote, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, li, ol, p, pre, td, th, ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+      header {
+        height: 64px;
+        transition: height .4s;
+      }
+
+      .header-bar {
+        position: fixed;
+        border-bottom: 1px solid #ededed;
+        box-shadow: none;
+        background: #fff;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+      }
+
+      .header-brand {
+        margin-left: 24px;
+        height: 100% !important;
+        /*position: relative;*/
+      }
+
+      .header-brand .brand-logo {
+        width: 180px;
+        display: table;
+        height: 100%;
+        padding: 5px 0;
+      }
+
+      .home-link {
+        display: table-cell;
+        padding-top: 2.5px;
+        vertical-align: middle;
+      }
+
+      .logo {
+        width: 179px;
+        border: 0;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .header-nav {
+        clear: none;
+        height: 100%;
+        margin-left: 48px;
+      }
+
+      .nav-list {
+        height: 100%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-list-item {
+        font-size: 20px;
+        line-height: 1.5;
+      }
+
+      .nav-link {
+        color: #5f6368;
+        height: 64px;
+        line-height: 1.85714;
+        font-size: 14px;
+        font-weight: 400;
+        height: auto;
+        letter-spacing: .25px;
+        padding: 10px 0 9px;
+        width: auto;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .nav-link.is-active {
+        color: #202124;
+      }
+
+      .nav-label {
+        border-bottom: 2px solid transparent;
+        padding-bottom: 22px;
+      }
+
+      .nav-link.is-active>.nav-label {
+        border-bottom: 2px solid #3367d6;
+      }
+    </style>
+</head>
+<body>
+    <header>
+      <div class="header-bar">
+        <div class="header-brand">
+          <div class="brand-logo">
+            <a href="#" class="home-link">
+              <img src="img/cravvings.png" alt="Brand Logo" class="logo">
+            </a>
+          </div>
+        </div>
+        <nav class="header-nav">
+          <ul class="nav-list">
+            <li class="nav-list-item"><a href="#" class="nav-link"><span class="nav-label">Home</span></a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link"><span class="nav-label">About</span></a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link"><span class="nav-label">Services</span></a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link"><span class="nav-label">Projects</span></a></li>
+            <li class="nav-list-item"><a href="#" class="nav-link"><span class="nav-label">Contact</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <script>
+        let form  = document.querySelector('form')
+
+        form.addEventListener('submit', function(e){
+          e.preventDefault()
+          const formData = new FormData(form)
+          console.log(Object.fromEntries(formData))
+          //   obj = {}
+          // for (var key of formData.keys()) {
+          //       obj[key] = formData.get(key);
+          //   }
+          //   console.log(obj)
+        })
+    </script>
+</body>
+</html>
