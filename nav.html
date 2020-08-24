@@ -18,6 +18,10 @@
         text-decoration: none;
       }
 
+      button {
+        cursor: pointer;
+      }
+
       header {
         height: 64px;
         transition: height .4s;
@@ -278,7 +282,7 @@
           <div class="side-nav__brand">
             <div class="side-nav__logo">
               <a href="#" class="side-nav__home-link">
-                <img src="img/logo.png" alt="Brand Logo" class="logo">
+                <img src="img/logo.png" alt="Brand Logo" class="side-nav__logo logo">
               </a>
             </div>
           </div>
@@ -309,7 +313,20 @@
 
 
     <script>
-        
+        var sideNav = document.querySelector('.side-nav');
+        var bdy = document.querySelector('body');
+        bdy.addEventListener('click', function(e){
+          if (!e.target.classList[0].includes('side-nav') && !e.target.classList[0].includes('hamburger')) {
+            e.preventDefault()
+            bdy.classList.remove('is-showing-side-nav');
+          }
+        })
+
+        document.querySelector('.hamburger-button').addEventListener('click', function(e){
+          e.preventDefault();
+          bdy.classList.add('is-showing-side-nav');
+          sideNav.classList.add('is-visible')
+        })
     </script>
 </body>
 </html>
