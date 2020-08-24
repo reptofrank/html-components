@@ -36,6 +36,44 @@
         align-items: center;
       }
 
+      .hamburger {
+        height: 100%;
+        width: 56px;
+        box-sizing: border-box;
+        /*display: none;*/
+      }
+
+      .hamburger .hamburger-wrapper {
+        height: 100%;
+        padding: 12px;
+        vertical-align: middle;
+      }
+
+      .hamburger-button {
+        -webkit-appearance: button;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        background: 0 0;
+        border: 0;
+        border-radius: 50%;
+        color: inherit;
+        display: block;
+        height: 100%;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: relative;
+        width: 100%;
+      }
+
+      .hamburger-image {
+        display: block;
+        margin: 0 auto;
+        height: 24px;
+        width: 24px;
+      }
+
       .header-brand {
         margin-left: 24px;
         height: 100% !important;
@@ -63,7 +101,7 @@
       }
 
       .header-nav {
-        clear: none;
+        display: none;
         height: 100%;
         margin-left: 48px;
       }
@@ -107,15 +145,121 @@
       .nav-link.is-active>.nav-label {
         border-bottom: 2px solid #3367d6;
       }
+
+      @media (min-width: 900px) {
+        .hamburger {
+          display: none;
+        }
+
+        .header-nav {
+          display: block
+        }
+      }
+
+      .side-nav {
+        height: 100vh;
+        background: #fff;
+        border: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        max-width: 280px;
+        position: fixed;
+        right: 56px;
+        transform: translate3d(-100%,0,0);
+        transition: transform .35s cubic-bezier(.24,1,.32,1);
+        visibility: hidden;
+        z-index: 102;
+      }
+
+      .side-nav.is-visible {
+        visibility: visible;
+      }
+
+      .is-showing-side-nav .side-nav {
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,.12);
+        transform: translate3d(0, 0, 0);
+      }
+
+      .side-nav__content {
+        height: 100%;
+        position: absolute;
+        bottom: 150px;
+        left: 0;
+        top: 0;
+        right: 0;
+        overflow-y: auto;
+      }
+
+      .side-nav__brand {
+        height: 56px;
+        box-shadow: inset 0 -1px 0 0 #dadce0;
+        position: relative;
+      }
+
+      .side-nav__logo {
+        height: 100%;
+        margin-left: 16px;
+      }
+
+      .side-nav__home-link {
+        
+      }
+
+      .side-nav__nav {
+        padding: 20px 0;
+      }
+
+      .side-nav__nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .side-nav__nav-list-item {
+        width: 100%;
+      }
+
+      .side-nav__nav-link {
+        color: #5f6368;
+        font-family: "Google Sans",Roboto,Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 48px;
+        letter-spacing: .25px;
+        padding-left: 16px;
+        padding-right: 16px;
+        vertical-align: middle;
+        width: 100%;
+        display: table-cell;
+      }
+
+      .side-nav__nav-list__nested {
+        list-style: none;
+        margin-bottom: 0;
+        margin-left: 0;
+      }
+
+      .side-nav__nav-list__nested .side-nav__nav-link {
+        padding-right: 32px;
+        padding-left: 32px;
+      }
     </style>
 </head>
 <body>
     <header>
       <div class="header-bar">
+        <div class="hamburger">
+          <div class="hamburger-wrapper">
+            <button class="hamburger-button">
+              <img class="hamburger-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAAVElEQVRoge3W0Q2AMAxDQRcxOExOhyBSoupuAvvvJQA0WEme7hEVVpKve0SFq3tAFUemuZO83SMAgCIyfppjotGRaWQ8AJxExk9zTDQ6Mo2MB+CPDXJLBiVsKHgMAAAAAElFTkSuQmCC" alt="Hamburger Icon">
+            </button>
+          </div>
+        </div>
         <div class="header-brand">
           <div class="brand-logo">
             <a href="#" class="home-link">
-              <img src="img/cravvings.png" alt="Brand Logo" class="logo">
+              <img src="img/logo.png" alt="Brand Logo" class="logo">
             </a>
           </div>
         </div>
@@ -129,22 +273,43 @@
           </ul>
         </nav>
       </div>
+      <div class="side-nav">
+        <div class="side-nav__content">
+          <div class="side-nav__brand">
+            <div class="side-nav__logo">
+              <a href="#" class="side-nav__home-link">
+                <img src="img/logo.png" alt="Brand Logo" class="logo">
+              </a>
+            </div>
+          </div>
+          <nav class="side-nav__nav">
+            <ul class="side-nav__nav-list">
+              <li class="side-nav__nav-list-item">
+                <a href="#" class="side-nav__nav-link">Home</a>
+                <ul class="side-nav__nav-list__nested">
+                  <li class="side-nav__nav-list-item"><a href="#" class="side-nav__nav-link">Home One</a></li>
+                  <li class="side-nav__nav-list-item"><a href="#" class="side-nav__nav-link">Home Two</a></li>
+                  <li class="side-nav__nav-list-item"><a href="#" class="side-nav__nav-link">Home Three</a></li>
+                </ul>
+              </li>
+              <li class="side-nav__nav-list-item">
+                <a href="#" class="side-nav__nav-link">About</a>
+              </li>
+              <li class="side-nav__nav-list-item">
+                <a href="#" class="side-nav__nav-link">Services</a>
+              </li>
+              <li class="side-nav__nav-list-item">
+                <a href="#" class="side-nav__nav-link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
 
 
     <script>
-        let form  = document.querySelector('form')
-
-        form.addEventListener('submit', function(e){
-          e.preventDefault()
-          const formData = new FormData(form)
-          console.log(Object.fromEntries(formData))
-          //   obj = {}
-          // for (var key of formData.keys()) {
-          //       obj[key] = formData.get(key);
-          //   }
-          //   console.log(obj)
-        })
+        
     </script>
 </body>
 </html>
